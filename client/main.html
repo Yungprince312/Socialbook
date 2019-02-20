@@ -11,21 +11,28 @@
     </div>
   </div>
     {{> addProfile}}
-    {{> profile}}
+    <div class="row justify-content-around">
+      {{> profile}}
+    </div>
 </div>
 </body>
 
 <template name="profile">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8">
-        <img class="" src="red-team.jpg" alt=""> 
+  {{#each profAll}}
+  <div id="{{_id}}" class="col-4 mt-5 mb-5">
+    <div class="row justify-content-end">
+      <div class="col-1">
+        <i  class="zmdi zmdi-close-circle js-delete"></i>
       </div>
     </div>
-  </div>
-    <div class="row justify-content-around">
+      <div class="row">
+      <div class="col-sm-8">
+        <img class="imgs" src="{{img}}" alt=""> 
+      </div>
+    </div>
+      <div class="row justify-content-around">
       <div class="col-sm-2">
-        <hi class="display-4">{{proffname}}</hi>
+        <hi class="display-4">{{firstname}}&nbsp;{{lastname}}</hi>
       </div>
     </div>
   <div class="row justify-content-around">
@@ -40,6 +47,8 @@
       </div>
     </div>
   </div>
+  </div>
+  {{/each}}
 </template>
 
 <template name="addProfile">
@@ -82,5 +91,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
 </template>

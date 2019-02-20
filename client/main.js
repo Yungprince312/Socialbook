@@ -5,8 +5,8 @@ import './main.html';
 import '../lib/collections.js';
 
 Template.profile.helpers({
-	proffname(){
-		return userDB.findOne({}).firstname;
+	profAll(){
+		return userDB.find({});
 	}
 });
 
@@ -15,8 +15,17 @@ Template.profile.events({
    console.log("You clicked like");
   },
   'click .js-dislike'(event, instance){
-  	alert("Clicked dislike");
+  	//alert("Clicked dislike");
+  	console.log("You clicked dislike");
   },
+  'click .js-delete'(event, instance){
+  	//console.log(this._id);
+  	var profID = this._id;
+  	$('#' + profID).fadeOut("slow", "swing", function () {
+  		userDB.remove ({_id: profID});
+  	});
+
+  }
 });
 
 
@@ -26,6 +35,9 @@ Template.addProfile.events({
 	var fName = $("#exampleModal input[name='firstname']").val();
 	var lName = $("#exampleModal input[name='lastname']").val();
 	var Photopic = $("#exampleModal input[name='Photopic']").val();
+	if(Photopic == ""){
+		Photopic="jpg.png";
+	}
 	console.log("The first name is",fName);
 	console.log("The last name is",lName);
 	console.log("The Photo is",Photopic);

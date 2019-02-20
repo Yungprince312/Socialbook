@@ -2,6 +2,11 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
-{
-	
+
+.imgs{
+
+	width:100% ;
+}
+.button-spacing{
+	padding: 2em;
 }
